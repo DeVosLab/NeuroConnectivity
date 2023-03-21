@@ -2,12 +2,27 @@
 	*************4**********
 	Author: 			Winnok H. De Vos & Marlies Verschuuren
 	Date Created: 		Februari 20, 2023
-	Date Last Modified:	Februari 20, 2023
+	Date Last Modified:	March 21, 2023
  	
  	Description: 
-	It is a simplified version of MorphoNeuroNet (Pani et al., Cytometry 2014)
+	ImageJ/Fiji macro set to quantify neuronal connectivity in images of iPSC derived- and primary neuronal cultures. 
+	This macro is derived from an Acapella® (PerkinElmer) script (https://github.com/VerschuurenM/NeuronalConnectivity). 
+	Cultures are immunochemically labeled for a nuclear marker, dendrite marker and a pre- and postsynaptic marker. 
+	After maximum projection of acquired z-stacks, nuclei are detected using a manually assigned threshold or by applying the trained convolution neural network Stardist. 
+	Neurites are identified using a rough (user-defined threshold) and fine (user-defined threshold after tubeness filtering) segmentation, which is a simplified version of MorphoNeuroNet. 
+	Next, the nuclei mask is subtracted from the neurite mask after which the neurite mask is dilated to obtain a search region in which the pre- and postsynaptic spots are detected. 
+	The spots are first enhanced using a gaussian, Laplacian or multi-scale Laplacian filter with a user-defined kernel size. 
+	Next, a user-defined threshold is applied to segment the spots. 
+	The resolution of the microscope setup does not allow determining the exact location of individual markers within a synapse, but this is not the intention of the assay. 
+	Instead, the lower resolution is exploited to define synapses as those objects that demonstrate an overlap of minimum 1 pixel between the pre- and postsynaptic spots. 
+	In addition to this object-based colocalization, the Pearson correlation of the pre- and postsynaptic channel is calculated in the search region as an intensity-based colocalization metric.
 	
-	Change Log
+	Requirements:
+	Requires FeatureJ and imagescience plugins (E. Meijering): download at http://www.imagescience.org/meijering/software/featurej/
+	Requires Stardist and CSBDeep plugins (overlapping nuclei segmentation): https://imagej.net/StarDist
+	
+	Change Log:
+	v1: Building blocks CellBlocks (https://github.com/DeVosLab/CellBlock) and MorphoNeuroNet (Pani et al.)
 	
  	_________________________________________________________________
 */
