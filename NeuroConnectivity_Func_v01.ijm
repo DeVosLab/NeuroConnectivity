@@ -1,17 +1,14 @@
-/*	NeuroConnectivity_Func_v04.ijm
+/*	NeuroConnectivity_Func_v01.ijm
 	*************4**********
 	Author: 			Winnok H. De Vos
 	Modified by: 		Marlies Verschuuren
 	Date Created: 		December 17th, 2010
-	Date Last Modified:	October 6th, 2023 
+	Date Last Modified:	Januari 23th, 2024 
  	
  	Description: 
  	Macro Set dedicated to the analysis of calcium fluxes in whole fields or cellular ROIs within the field of view
  	
  	Change Log
-	v4: * Adapt settings window
-		* Fix verification tool
- 	
  	_________________________________________________________________
 */	
 
