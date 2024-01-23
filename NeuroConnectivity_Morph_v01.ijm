@@ -1,8 +1,9 @@
-/*	NeuroConnectivity_v5.ijm
+/*	NeuroConnectivity_Morph_v01.ijm
 	*************4**********
-	Author: 			Marlies Verschuuren & Winnok H. De Vos
+	Author: 			Winnok H. De Vos
+	Modified by: 		Marlies Verschuuren
 	Date Created: 		Februari 20, 2023
-	Date Last Modified:	November 11, 2023
+	Date Last Modified:	Januari 23, 2024
  	
  	Description:
  	ImageJ/Fiji macro set to quantify neuronal connectivity in images of iPSC derived- and primary neuronal cultures. 
@@ -28,18 +29,7 @@
 	
 	
 	Change Log
-	v2: * Adapt modules to run seperately
-		* Add well selection to verification tool
-		
-	v3: * Fix bug empty image 
-		* More modules in script
-	
-	v4: * Fix bug results reporting
-		* Summarise nuclei and spot results
-		* Skeletonize
-		
-	v5: * Adapt settings window size 
-		* Fix bug verification tool
+	v1: * Fix Bug Tube Enhancement & Contrast
 	
  	_________________________________________________________________
 */
@@ -1252,7 +1242,12 @@ function segmentNeurites(id,c,mid)
 	cid = getImageID;
 	selectImage(cid);
 	calibrateImage(cid);
-	if(bitDepth==32){resetMinAndMax;run("16-bit");}
+	if(bitDepth==32){
+		resetMinAndMax;
+		run("16-bit");
+	}else{
+		resetMinAndMax;
+	}
 	if(neurites_clahe>0)run("Enhance Local Contrast (CLAHE)", "blocksize=100 histogram=256 maximum=3 mask=*None* fast_(less_accurate)");
 	if(neurites_median>0) run("Median...","radius="+neurites_median_radius);
 	
@@ -1269,6 +1264,7 @@ function segmentNeurites(id,c,mid)
 	run("Convert to Mask");
 	rename("Fine");
 	
+
 	//	Segment rough features
 	selectImage(cid);
 	setAutoThreshold("Default dark ");
