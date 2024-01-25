@@ -135,8 +135,11 @@ data.roi$Rep = as.factor(data.roi$Rep)
 data.roi$Plate = as.factor(data.roi$Plate)
 data.roi$Well = as.factor(data.roi$Well)
 data.roi$ROI_Image = as.factor(data.roi$ROI_Image)
+data.roi$ROI_Image=factor(data.roi$ROI_Image, levels = sort(unique(as.numeric(data.roi$ROI_Image))))
 data.roi$ROI_Well = as.factor(data.roi$ROI_Well)
+data.roi$ROI_Well=factor(data.roi$ROI_Well, levels = sort(unique(as.numeric(data.roi$ROI_Well))))
 data.roi$ROI_Data = as.factor(data.roi$ROI_Data)
+data.roi$ROI_Data=factor(data.roi$ROI_Data, levels = sort(unique(as.numeric(data.roi$ROI_Data))))
 
 #--4. Plot Raw Data -------------------------------------------------------------
 data.temp=data.roi
